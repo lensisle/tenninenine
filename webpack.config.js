@@ -20,7 +20,12 @@ const config = {
   module: {
     rules: [
       {
-        loader: "babel-loader",
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: ["env", "react"]
+          }
+        },
         test: /\.js$/,
         exclude: [
           path.resolve(__dirname, "node_modules")
