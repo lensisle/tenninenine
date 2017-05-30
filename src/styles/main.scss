@@ -6,3 +6,18 @@
 html {
   font-size: 62.5%; 
 }
+
+body {
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+input, select, button {
+  font-size: 1.3rem;
+}
+
+
+@import "./components/screen";
+@import "./components/wrapper";
+@import "./components/dialogue";
+@import "./components/button";
+@import "./components/map";
