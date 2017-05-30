@@ -1,7 +1,7 @@
 {
-  "name": "papando",
+  "name": "exninenine",
   "version": "1.0.0",
-  "description": "\"# Papando\"",
+  "description": "\"# exninenine\"",
   "main": "app.js",
   "scripts": {
     "build": "webpack",
@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/camiloei/Papando.git"
+    "url": "git+https://github.com/camiloei/exninenine.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/camiloei/Papando/issues"
+    "url": "https://github.com/camiloei/exninenine/issues"
   },
-  "homepage": "https://github.com/camiloei/Papando#readme",
+  "homepage": "https://github.com/camiloei/exninenine#readme",
   "devDependencies": {
     "babel-core": "^6.24.1",
     "babel-loader": "^7.0.0",
