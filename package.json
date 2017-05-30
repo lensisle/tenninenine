@@ -1,0 +1,39 @@
+{
+  "name": "papando",
+  "version": "1.0.0",
+  "description": "\"# Papando\"",
+  "main": "app.js",
+  "scripts": {
+    "build": "webpack",
+    "build:watch": "webpack --watch",
+    "start": "lite-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/camiloei/Papando.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/camiloei/Papando/issues"
+  },
+  "homepage": "https://github.com/camiloei/Papando#readme",
+  "devDependencies": {
+    "babel-core": "^6.24.1",
+    "babel-loader": "^7.0.0",
+    "babel-preset-env": "^1.5.1",
+    "css-loader": "^0.28.3",
+    "extract-text-webpack-plugin": "^2.1.0",
+    "html-webpack-plugin": "^2.28.0",
+    "lite-server": "^2.3.0",
+    "node-sass": "^4.5.3",
+    "sass-loader": "^6.0.5",
+    "style-loader": "^0.18.1",
+    "webpack": "^2.6.1"
+  },
+  "dependencies": {
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "redux": "^3.6.0"
+  }
+}
