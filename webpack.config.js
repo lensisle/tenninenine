@@ -26,7 +26,7 @@ const config = {
             presets: ["env", "react"]
           }
         },
-        test: /\.js$/,
+        test: /\.jsx?$/,
         exclude: [
           path.resolve(__dirname, "node_modules")
         ]
