@@ -1,4 +1,4 @@
-import { SET_PLAYER_ROOM } from "./actionTypes";
+import { SET_PLAYER_ROOM, TOGGLE_SCENE_DESCRIPTION } from "./actionTypes";
 
 export const setPlayerRoom = (world, currentPosition, direction) => {
   const worldSize = {
@@ -27,4 +27,11 @@ export const setPlayerRoom = (world, currentPosition, direction) => {
     newPosX,
     newPosY
   }
+};
+
+export const toggleSceneDescription = (currentDescriptionEnabled) => {
+  return {
+    type: TOGGLE_SCENE_DESCRIPTION,
+    showSceneDescription: !currentDescriptionEnabled
+  };
 };

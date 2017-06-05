@@ -1,10 +1,12 @@
 import React from "react";
 
-import Game from "./../containers/game";
+import Scene from "./../containers/scene";
+import Controls from "./../containers/controls";
 
 const App = () => (
   <div className="wrapper">
-    <Game />
+    <Scene />
+    <Controls />
   </div>
 );
 

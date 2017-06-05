@@ -16,7 +16,8 @@ const playerRoom = {
   position: {
     x: 0,
     y: 0
-  }
+  },
+  showSceneDescription: false
 };
 
 // TODO: set this player dynamically through a form

@@ -7,3 +7,4 @@ export const HEAL_PLAYER = "heal_player";
 // Player/Room Actions
 
 export const SET_PLAYER_ROOM = "set_player_room";
+export const TOGGLE_SCENE_DESCRIPTION = "toggle_scene_description";

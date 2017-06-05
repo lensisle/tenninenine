@@ -1,10 +1,10 @@
 .scene {
-   
+   height: 55rem;
 }
 
 .scene--image {
   display: block;
-  margin: auto;
+  margin: 1.3rem auto;
   width: 78%;
 }
 
@@ -17,6 +17,12 @@
   font-size: 2.6rem;
   font-weight: 400;
   text-decoration: underline;
+  cursor: pointer;
+  transition: font-size .2s ease;
+
+  &:active {
+    font-size: 3rem;
+  }
 }
 
 .scene--description {
