@@ -4,14 +4,14 @@ import { connect } from "react-redux";
 import { SET_PLAYER_ROOM } from "./../actions/actionTypes";
 
 import Scene from "./../components/scene";
-import PlayerInfo from "./../components/playerInfo";
+import PlayerStats from "./../components/playerStats";
 import Controls from "./controls";
 
 class Game extends React.Component {
   render() {
     return (
       <div>
-        <PlayerInfo player={this.props.player} />
+        <PlayerStats player={this.props.player} position={this.props.currentRoom.position} />
         <Scene room={this.props.currentRoom.room} />
         <Controls />
       </div>

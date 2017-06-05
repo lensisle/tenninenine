@@ -10,6 +10,7 @@ import App from "./components/app";
 import { createWorld } from "./game/world";
 
 const world = createWorld(10, 10);
+
 const playerRoom = {
   room: world[0][0],
   position: {

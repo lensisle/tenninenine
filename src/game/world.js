@@ -5,9 +5,12 @@ import Trap02 from "./../../assets/images/trap02.png";
 import Treasure from "./../../assets/images/treasure.png";
 import Hall from "./../../assets/images/hall.png";
 import Exit from "./../../assets/images/exit.png";
-import FirstScene from "./../../assets/images/firstScene.png";
 
-const RoomTypes = [
+// special scenes
+import FirstScene from "./../../assets/images/firstScene.png";
+import CastleScene from "./../../assets/images/castle-outside.png";
+
+const SpeciaRoomTypes = [
   {
     name: "Lost on an island",
     description: "You woke up on a hill, it's at night and it is very cold. You do not know where you are or where you come from.",
@@ -19,6 +22,29 @@ const RoomTypes = [
     image: FirstScene
   },
   {
+    name: "Castle Entrance",
+    description: "You are about to enter this mysterious castle. You look around and there don't seem to be many other options.",
+    action: "enter",
+    probSuccess: 100,
+    actionSuccess: "After passing the entrance you hear a loud noise of doors closing behind you.",
+    actionFailed: "...",
+    requirements: [],
+    image: CastleScene
+  },
+  {
+    name: "Exit",
+    description: "You found the exit.",
+    actions: "",
+    probSuccess: 100,
+    actionSuccess: "",
+    actionFailed: "",
+    requirements: [],
+    image: Exit
+  }
+];
+
+const RoomTypes = [
+  {
     name: "Wooden Door",
     description: "There's a wooden door blocking your path. Maybe a cooper key could open it.",
     action: "Open",
@@ -27,16 +53,6 @@ const RoomTypes = [
     actionFailed: "You don't have a key to open it.",
     requirements: ["wooden-key"],
     image: Door
-  },
-  {
-    name: "Castle Entrance",
-    description: "You are about to enter this mysterious castle. You look around and there don't seem to be many other options.",
-    action: "enter",
-    probSuccess: 100,
-    actionSuccess: "After passing the entrance you hear a loud noise of doors closing behind you.",
-    actionFailed: "...",
-    requirements: [],
-    image: Entrance
   },
   {
     name: "Trap of thorns",
@@ -70,7 +86,7 @@ const RoomTypes = [
   },
   {
     name: "Hall",
-    description: "",
+    description: "Hall description",
     actions: "",
     probSuccess: 100,
     actionSuccess: "",
@@ -79,14 +95,14 @@ const RoomTypes = [
     image: Hall
   },
   {
-    name: "Exit",
-    description: "You found the exit.",
+    name: "Mysterious Path",
+    description: "Mysterious path description",
     actions: "",
     probSuccess: 100,
     actionSuccess: "",
     actionFailed: "",
     requirements: [],
-    image: Exit
+    image: Entrance
   }
 ];
 
@@ -98,6 +114,7 @@ const getRandomInt = (min, max) => {
 
 // For now we will keep the world generation simple.
 // TODO: add more generation rules.
+// TODO: include special scenes in the world generation.
 const createWorld = (width, height) => {
   const worldInstance = new Array(width);
 
@@ -110,8 +127,6 @@ const createWorld = (width, height) => {
       worldInstance[i][j] = RoomTypes[0, getRandomInt(0, RoomTypes.length)];
     }
   }
-
-  worldInstance[0][0] = RoomTypes[0]; // set always the first position to the hill scene
 
   return worldInstance;
 };
