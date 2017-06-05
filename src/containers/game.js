@@ -12,7 +12,7 @@ class Game extends React.Component {
     return (
       <div>
         <PlayerInfo player={this.props.player} />
-        <Scene room={this.props.currentRoom} />
+        <Scene room={this.props.currentRoom.room} />
         <Controls />
       </div>
     )

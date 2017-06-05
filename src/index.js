@@ -10,7 +10,13 @@ import App from "./components/app";
 import { createWorld } from "./game/world";
 
 const world = createWorld(10, 10);
-const playerRoom = world[0][0];
+const playerRoom = {
+  room: world[0][0],
+  position: {
+    x: 0,
+    y: 0
+  }
+};
 
 // TODO: set this player dynamically through a form
 

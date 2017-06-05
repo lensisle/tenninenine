@@ -11,7 +11,7 @@ const RoomTypes = [
   {
     name: "Lost on an island",
     description: "You woke up on a hill, it's at night and it is very cold. You do not know where you are or where you come from.",
-    actions: ["explore"],
+    action: "Explore",
     probSuccess: 100,
     actionSuccess: "You get up and walk around looking for information.",
     actionFailed: "...",
@@ -21,7 +21,7 @@ const RoomTypes = [
   {
     name: "Wooden Door",
     description: "There's a wooden door blocking your path. Maybe a cooper key could open it.",
-    actions: ["open"],
+    action: "Open",
     probSuccess: 100,
     actionSuccess: "You opened the door.",
     actionFailed: "You don't have a key to open it.",
@@ -31,7 +31,7 @@ const RoomTypes = [
   {
     name: "Castle Entrance",
     description: "You are about to enter this mysterious castle. You look around and there don't seem to be many other options.",
-    actions: ["enter"],
+    action: "enter",
     probSuccess: 100,
     actionSuccess: "After passing the entrance you hear a loud noise of doors closing behind you.",
     actionFailed: "...",
@@ -41,7 +41,7 @@ const RoomTypes = [
   {
     name: "Trap of thorns",
     description: "You see a trap, trying to jump it could hurt you a lot.",
-    actions: ["jump"],
+    action: "jump",
     probSuccess: 60,
     actionSuccess: "You dodged the trap successfully",
     actionFailed: "You were hurt trying to avoid the trap",
@@ -51,7 +51,7 @@ const RoomTypes = [
   {
     name: "Trap of blades",
     description: "You see a trap, trying to avoid it could hurt you a lot.",
-    actions: ["jump"],
+    action: "jump",
     probSuccess: 80,
     actionSuccess: "You dodged the trap successfully",
     actionFailed: "You were hurt trying to avoid the trap",
@@ -61,7 +61,7 @@ const RoomTypes = [
   {
     name: "Small Treasure",
     description: "You found a chest, it can have many surprises inside.",
-    actions: ["open"],
+    action: "open",
     probSuccess: 100,
     actionSuccess: "You opened the chest and found: ",
     actionFailed: "...",
@@ -71,7 +71,7 @@ const RoomTypes = [
   {
     name: "Hall",
     description: "",
-    actions: [],
+    actions: "",
     probSuccess: 100,
     actionSuccess: "",
     actionFailed: "",
@@ -81,7 +81,7 @@ const RoomTypes = [
   {
     name: "Exit",
     description: "You found the exit.",
-    actions: [],
+    actions: "",
     probSuccess: 100,
     actionSuccess: "",
     actionFailed: "",
@@ -111,7 +111,7 @@ const createWorld = (width, height) => {
     }
   }
 
-  worldInstance[0][0] = RoomTypes[0]; // set always the first position to the castle entrance
+  worldInstance[0][0] = RoomTypes[0]; // set always the first position to the hill scene
 
   return worldInstance;
 };

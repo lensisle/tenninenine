@@ -1,0 +1,30 @@
+.controls {
+  display: flex;
+}
+
+.controls__buttons {
+  justify-content: space-around;
+  width: 20%;
+  height: 10rem;
+}
+
+.controls--button {
+  background-color: black;
+  border: 2px solid white;
+  color: white;
+  transition: background .2s ease, transform .2s ease;
+  cursor: pointer;
+  font-size: 1.5rem;
+
+  &:hover, &:focus {
+    background: #e8e8e8;
+    color: black;
+    font-weight: 600;
+  }
+
+  &:active {
+    background: #cccccc;
+    transform: scale(1.1);
+    font-size: 1.6rem;
+  }
+}

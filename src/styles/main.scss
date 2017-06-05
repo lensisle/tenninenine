@@ -1,3 +1,5 @@
+@import "./components/reset";
+
 * {
   margin: 0;
   padding: 0;
@@ -22,3 +24,4 @@ input, select, button {
 
 @import "./components/wrapper";
 @import "./components/scene";
+@import "./components/controls";

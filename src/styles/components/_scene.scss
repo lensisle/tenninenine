@@ -1,5 +1,24 @@
+.scene {
+
+}
+
 .scene--image {
   display: block;
   margin: auto;
   width: 100%;
+}
+
+.scene__text {
+  padding: 0 2rem;
+  margin: 1.3rem;
+}
+
+.scene--name {
+  font-size: 2.6rem;
+  font-weight: 400;
+}
+
+.scene--description {
+  font-size: 2rem;
+  font-style: italic;
 }
