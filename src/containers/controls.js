@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import ControlButtons from "./../components/controlButtons";
+import ControlButton from "./../components/controlButton";
 
 import { setPlayerRoom } from "./../actions/playerRoomActions";
 
@@ -14,7 +14,13 @@ class Controls extends React.Component {
       down: () => this.props.onMoveDown(this.props.world, this.props.playerPosition)
     };
     return (
-      <ControlButtons onMove={movements} actionName={this.props.action} />
+      <div className="controls">
+        <ControlButton onClick={movements.left} text="Move Left" />
+        <ControlButton onClick={movements.right} text="Move Right" />
+        <ControlButton onClick={movements.up} text="Move Up" />
+        <ControlButton onClick={movements.down} text="Move Down" />
+        <ControlButton onClick={ () => {} } text={this.props.action} />
+      </div>
     )
   }
 }
