@@ -8,12 +8,11 @@ import { toggleSceneDescription } from "./../actions/playerRoomActions";
 
 class Scene extends React.Component {
   render() { 
-    const showDescription = () => this.props.toggleDescription(this.props.currentRoom.showSceneDescription)
     const sceneStyle = this.props.currentRoom.showSceneDescription ? "wrapper--border scene" : "wrapper--border";
     return (
       <div className={sceneStyle}>
         <PlayerStats player={this.props.player} position={this.props.currentRoom.position} />
-        <div onClick={showDescription}>
+        <div>
           {this.getInfo(this.props.currentRoom.showSceneDescription)}
         </div>
       </div>
@@ -21,10 +20,11 @@ class Scene extends React.Component {
   }
 
   getInfo(showSceneDescription) {
+    const showDescription = () => this.props.toggleDescription(this.props.currentRoom.showSceneDescription)
     if(showSceneDescription) {
       return (
         <div>
-          <p className="scene--name scene__text">{this.props.currentRoom.room.name}</p>
+          <p onClick={showDescription} className="scene--name scene__text">{this.props.currentRoom.room.name}</p>
           <p className="scene--description scene__text">{this.props.currentRoom.room.description}</p>
         </div>
       );
@@ -32,7 +32,9 @@ class Scene extends React.Component {
       return (
         <div>
           <img src={this.props.currentRoom.room.image} className="scene--image" />
-          <p className="scene--name scene__text">{this.props.currentRoom.room.name}</p>
+          <div>
+            <p onClick={showDescription} className="scene--name scene__text">{this.props.currentRoom.room.name}</p>
+          </div>
         </div>
       );
     }
