@@ -12,11 +12,12 @@ const copyHTMLTemplate = new HtmlWebpackPlugin({
 });
 
 const config = {
-  entry: "./src/App.js",
+  entry: "./src/index.js",
   output: {
     filename: "bundle.js",
     path: path.resolve(__dirname, "dist")
   },
+  devtool: "source-map",
   module: {
     rules: [
       {
@@ -37,6 +38,16 @@ const config = {
             use: [{ loader: "css-loader" }, { loader: "sass-loader" }],
             fallback: "style-loader"
         })
+      },
+      {
+        test: /\.(jpe?g|png|gif|svg)$/,
+        use: [
+          {
+            loader: "url-loader",
+            options: { limit: 5000 }
+          },
+          "image-webpack-loader"
+        ]
       }
     ]
   },

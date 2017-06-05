@@ -1,9 +1,13 @@
 .wrapper {
   margin: 0 auto;
-  max-width: 50rem;
+  width: 50rem;
   padding: 1.3rem;
 }
 
-.wrapper--columns {
-  display: flex;
+.wrapper--border {
+  border: 2px solid white;
+}
+
+.wrapper--input {
+  outline: none;
 }

@@ -9,16 +9,16 @@ html {
 
 body {
   font-family: Helvetica, Arial, sans-serif;
+  background: black;
+}
+
+p, h1, h2, h3, h4, h5 {
+  color: white;
 }
 
 input, select, button {
   font-size: 1.3rem;
 }
 
-
-@import "./components/screen";
 @import "./components/wrapper";
-@import "./components/dialogue";
-@import "./components/button";
-@import "./components/map";
-@import "./components/player-info";
+@import "./components/scene";

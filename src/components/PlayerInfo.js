@@ -1,12 +1,10 @@
 import React from "react";
-import PropTypes from 'prop-types';
 
-export default class PlayerInfo extends React.Component {
-  render() {
-    return (
-      <div className="player-info">
-        <p> Name: Cam - HP: 100 MP: 50 </p>
-      </div>
-    )
-  }
-}
+const PlayerInfo = ({player}) => (
+  <div>
+    <h1>Name: {player.name}</h1>
+    <h1>HP: {player.hp}</h1>
+  </div>
+)
+
+export default PlayerInfo;
