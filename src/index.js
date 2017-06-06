@@ -9,13 +9,13 @@ import App from "./components/app";
 
 import { createWorld } from "./game/world";
 
-const world = createWorld(10, 10);
+const world = createWorld(20, 20);
 
 const playerRoom = {
-  room: world[0][0],
+  room: world[1][1],
   position: {
-    x: 0,
-    y: 0
+    x: 1,
+    y: 1
   },
   showSceneDescription: false
 };
