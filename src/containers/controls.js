@@ -25,13 +25,35 @@ class Controls extends React.Component {
   }
 
   render() {
+
+    const leftDisabled = this.isDisabled("left");
+    const rightDisabled = this.isDisabled("right");
+    const upDisabled = this.isDisabled("up");
+    const downDisabled = this.isDisabled("down");
+    const actionDisabled = this.isDisabled("action");
+
+    const leftOnClick = leftDisabled ? () => {} : this.movements["left"];
+    const leftText = leftDisabled ? "-" : "Move Left";
+
+    const rightOnClick = rightDisabled ? () => {} : this.movements["right"];
+    const rightText = rightDisabled ? "-" : "Move Right";
+
+    const upOnClick = upDisabled ? () => {} : this.movements["up"];
+    const upText = upDisabled ? "-" : "Move Up";
+
+    const downOnClick = downDisabled ? () => {} : this.movements["down"];
+    const downText = downDisabled ? "-" : "Move Down";
+
+    const actionOnClick = actionDisabled ? () => {} : this.actions[GameplayActions.ACTION_BACK];
+    const actionText = actionDisabled ? "-" : this.props.playerRoom.room.action;
+
     return (
       <div className="controls">
-        <ControlButton onClick={this.movements["left"]} text="Move Left" />
-        <ControlButton onClick={this.movements["right"]} text="Move Right" />
-        <ControlButton onClick={this.movements["up"]} text="Move Up" />
-        <ControlButton onClick={this.movements["down"]} text="Move Down" />
-        <ControlButton onClick={this.actions[GameplayActions.ACTION_BACK]} text={this.props.playerRoom.room.action} />
+        <ControlButton onClick={leftOnClick} text={leftText} />
+        <ControlButton onClick={rightOnClick} text={rightText} />
+        <ControlButton onClick={upOnClick} text={upText} />
+        <ControlButton onClick={downOnClick} text={downText} />
+        <ControlButton onClick={actionOnClick} text={actionText} />
       </div>
     )
   }
