@@ -2,6 +2,7 @@ import Door from "./../../assets/images/door.png";
 import Entrance from "./../../assets/images/entrance.png";
 import Trap01 from "./../../assets/images/trap01.png";
 import Trap02 from "./../../assets/images/trap02.png";
+import Trap03 from "./../../assets/images/trap03.png";
 import Treasure from "./../../assets/images/treasure.png";
 import Hall from "./../../assets/images/hall.png";
 import Exit from "./../../assets/images/exit.png";
@@ -14,11 +15,13 @@ import Wall02 from "./../../assets/images/wall02.png";
 import FirstScene from "./../../assets/images/firstScene.png";
 import CastleScene from "./../../assets/images/castle-outside.png";
 
+import * as GameplayActions from "./gameplayActions";
+
 const SpeciaRoomTypes = [
   {
     name: "Lost on an island",
     description: "You woke up on a hill, it's at night and it is very cold. You do not know where you are or where you come from.",
-    action: "Explore",
+    action: GameplayActions.ACTION_EXPLORE_SORROUNDINGS,
     probSuccess: 100,
     actionSuccess: "You get up and walk around looking for information.",
     actionFailed: "...",
@@ -29,7 +32,7 @@ const SpeciaRoomTypes = [
   {
     name: "Castle Entrance",
     description: "You are about to enter this mysterious castle. You look around and there don't seem to be many other options.",
-    action: "Enter",
+    action: GameplayActions.ACTION_ENTER,
     probSuccess: 100,
     actionSuccess: "After passing the entrance you hear a loud noise of doors closing behind you.",
     actionFailed: "...",
@@ -38,9 +41,20 @@ const SpeciaRoomTypes = [
     image: CastleScene
   },
   {
-    name: "Exit",
-    description: "You found the exit.",
-    actions: "",
+    name: "Giant Door",
+    description: "There's is a giant door opened.",
+    actions: GameplayActions.ACTION_ESCAPE,
+    probSuccess: 100,
+    actionSuccess: "",
+    actionFailed: "",
+    requirements: [],
+    disableButtons: [],
+    image: Exit
+  },
+  {
+    name: "Closed Giant Door",
+    description: "There's is a giant door closed with 3 hidden compartments.",
+    actions: GameplayActions.ACTION_OPEN,
     probSuccess: 100,
     actionSuccess: "",
     actionFailed: "",
@@ -51,12 +65,11 @@ const SpeciaRoomTypes = [
 ];
 
 
-
 const RoomTypes = [
   {
     name: "Wooden Door",
     description: "There's a wooden door blocking your path. Maybe a cooper key could open it.",
-    action: "Open",
+    action: GameplayActions.ACTION_OPEN,
     probSuccess: 100,
     actionSuccess: "You opened the door.",
     actionFailed: "You don't have a key to open it.",
@@ -67,7 +80,7 @@ const RoomTypes = [
   {
     name: "Trap of thorns",
     description: "You see a trap, trying to jump it could hurt you a lot.",
-    action: "jump",
+    action: GameplayActions.ACTION_JUMP,
     probSuccess: 60,
     actionSuccess: "You dodged the trap successfully",
     actionFailed: "You were hurt trying to avoid the trap",
@@ -78,7 +91,7 @@ const RoomTypes = [
   {
     name: "Trap of blades",
     description: "You see a trap, trying to avoid it could hurt you a lot.",
-    action: "jump",
+    action: GameplayActions.ACTION_PASS_THROUGH,
     probSuccess: 80,
     actionSuccess: "You dodged the trap successfully",
     actionFailed: "You were hurt trying to avoid the trap",
@@ -87,9 +100,20 @@ const RoomTypes = [
     image: Trap02
   },
   {
+    name: "Trap of hole",
+    description: "You see a giant hole in the floor, trying to avoid it could hurt you a lot.",
+    action: GameplayActions.ACTION_JUMP,
+    probSuccess: 80,
+    actionSuccess: "You dodged the trap successfully",
+    actionFailed: "You were hurt trying to avoid the trap",
+    requirements: [],
+    disableButtons: [],
+    image: Trap03
+  },
+  {
     name: "Small Treasure",
     description: "You found a chest, it can have many surprises inside.",
-    action: "open",
+    action: GameplayActions.ACTION_OPEN,
     probSuccess: 100,
     actionSuccess: "You opened the chest and found: ",
     actionFailed: "...",
@@ -99,8 +123,8 @@ const RoomTypes = [
   },
   {
     name: "Hall",
-    description: "Hall description",
-    actions: "",
+    description: "You came to a giant hall full of old objects. It seems to be a quiet place to look for clues about this place.",
+    action: GameplayActions.ACTION_SEARCH_CLUES,
     probSuccess: 100,
     actionSuccess: "",
     actionFailed: "",
@@ -109,9 +133,9 @@ const RoomTypes = [
     image: Hall
   },
   {
-    name: "Mysterious Path",
-    description: "Mysterious path description",
-    actions: "",
+    name: "Mysterious Passage",
+    description: "There's a mysterious passage ahead. Who knows where it can leave you.",
+    action: GameplayActions.ACTION_ENTER,
     probSuccess: 100,
     actionSuccess: "",
     actionFailed: "",
@@ -125,23 +149,23 @@ const WallRoomTypes = [
   {
     name: "Wall",
     description: "A wall is blocking your path.",
-    actions: "",
+    action: GameplayActions.ACTION_BACK,
     probSuccess: 100,
     actionSuccess: "",
     actionFailed: "",
     requirements: [],
-    disableButtons: ["action"],
+    disableButtons: ["left", "right", "up", "down"],
     image: Wall01
   },
   {
     name: "Wall",
     description: "A wall is blocking your path.",
-    actions: "",
+    action: GameplayActions.ACTION_BACK,
     probSuccess: 100,
     actionSuccess: "",
     actionFailed: "",
     requirements: [],
-    disableButtons: ["action"],
+    disableButtons: ["left", "right", "up", "down"],
     image: Wall02
   }
 ];
@@ -177,7 +201,9 @@ const createWorld = (width, height) => {
   const posExitX = getRandomInt(0, worldInstance.length);
   const posExitY = getRandomInt(0, worldInstance[0].length);
 
-  worldInstance[posExitX][posExitY] = SpeciaRoomTypes[2];
+  worldInstance[posExitX][posExitY] = SpeciaRoomTypes[3]; // we set 1 exit randomly.
+
+  worldInstance[1][1] = RoomTypes[5]; // first room is always a hall.
 
   return worldInstance;
 };

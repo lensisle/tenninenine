@@ -8,3 +8,4 @@ export const HEAL_PLAYER = "heal_player";
 
 export const SET_PLAYER_ROOM = "set_player_room";
 export const TOGGLE_SCENE_DESCRIPTION = "toggle_scene_description";
+export const BACK_PREVIOUS_POSITION = "back_previous_position";

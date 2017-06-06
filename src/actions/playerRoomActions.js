@@ -1,5 +1,6 @@
-import { SET_PLAYER_ROOM, TOGGLE_SCENE_DESCRIPTION } from "./actionTypes";
+import { SET_PLAYER_ROOM, TOGGLE_SCENE_DESCRIPTION, BACK_PREVIOUS_POSITION } from "./actionTypes";
 
+// TODO: previous position should be set in another action
 export const setPlayerRoom = (world, currentPosition, direction) => {
   const worldSize = {
     width: world.length,
@@ -8,6 +9,11 @@ export const setPlayerRoom = (world, currentPosition, direction) => {
 
   let newPosX = currentPosition.x;
   let newPosY = currentPosition.y;
+
+  let previousPosition = {
+    x: 0,
+    y: 0
+  };
 
   if(direction.x > 0 && currentPosition.x < worldSize.width - 1) {
     newPosX += direction.x;
@@ -20,12 +26,17 @@ export const setPlayerRoom = (world, currentPosition, direction) => {
   }
 
   const room = world[newPosX][newPosY];
+  
+  if(newPosX !== currentPosition.x || newPosY !== currentPosition.y) {
+    previousPosition["x"] = currentPosition.x;
+    previousPosition["y"] = currentPosition.y;
+  }
 
   return {
     type: SET_PLAYER_ROOM,
     room,
-    newPosX,
-    newPosY
+    position: { x: newPosX, y: newPosY },
+    previousPosition
   }
 };
 
@@ -33,5 +44,15 @@ export const toggleSceneDescription = (currentDescriptionEnabled) => {
   return {
     type: TOGGLE_SCENE_DESCRIPTION,
     showSceneDescription: !currentDescriptionEnabled
+  };
+};
+
+export const backPreviousPosition = (world, currentPosition, previousPosition) => {
+  const room = world[previousPosition.x][previousPosition.y];
+  return {
+    type: BACK_PREVIOUS_POSITION,
+    room,
+    position: previousPosition,
+    previousPosition: currentPosition
   };
 };

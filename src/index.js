@@ -17,6 +17,10 @@ const playerRoom = {
     x: 1,
     y: 1
   },
+  previousPosition: {
+    x: 1,
+    y: 1
+  },
   showSceneDescription: false
 };
 
