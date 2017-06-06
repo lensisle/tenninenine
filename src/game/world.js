@@ -6,6 +6,7 @@ import Trap03 from "./../../assets/images/trap03.png";
 import Treasure from "./../../assets/images/treasure.png";
 import Hall from "./../../assets/images/hall.png";
 import Exit from "./../../assets/images/exit.png";
+import ClosedExit from "./../../assets/images/closedExit.png";
 
 // walls
 import Wall01 from "./../../assets/images/wall01.png";
@@ -43,7 +44,7 @@ const SpeciaRoomTypes = [
   {
     name: "Giant Door",
     description: "There's is a giant door opened.",
-    actions: GameplayActions.ACTION_ESCAPE,
+    action: GameplayActions.ACTION_ESCAPE,
     probSuccess: 100,
     actionSuccess: "",
     actionFailed: "",
@@ -54,13 +55,13 @@ const SpeciaRoomTypes = [
   {
     name: "Closed Giant Door",
     description: "There's is a giant door closed with 3 hidden compartments.",
-    actions: GameplayActions.ACTION_OPEN,
+    action: GameplayActions.ACTION_OPEN,
     probSuccess: 100,
     actionSuccess: "",
     actionFailed: "",
     requirements: [],
     disableButtons: [],
-    image: Exit
+    image: ClosedExit
   }
 ];
 
@@ -123,7 +124,7 @@ const RoomTypes = [
   },
   {
     name: "Hall",
-    description: "You came to a giant hall full of old objects. It seems to be a quiet place to look for clues about this place.",
+    description: "You came to a giant hall full of old artifacts and rarities. It seems to be a quiet place to look for clues about this place.",
     action: GameplayActions.ACTION_SEARCH_CLUES,
     probSuccess: 100,
     actionSuccess: "",
@@ -198,8 +199,8 @@ const createWorld = (width, height) => {
     }
   }
 
-  const posExitX = getRandomInt(0, worldInstance.length);
-  const posExitY = getRandomInt(0, worldInstance[0].length);
+  const posExitX = getRandomInt(0, worldInstance.length - 1);
+  const posExitY = getRandomInt(0, worldInstance[0].length - 1);
 
   worldInstance[posExitX][posExitY] = SpeciaRoomTypes[3]; // we set 1 exit randomly.
 
