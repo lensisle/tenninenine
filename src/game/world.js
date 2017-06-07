@@ -5,8 +5,6 @@ import Trap02 from "./../../assets/images/trap02.png";
 import Trap03 from "./../../assets/images/trap03.png";
 import Treasure from "./../../assets/images/treasure.png";
 import Hall from "./../../assets/images/hall.png";
-import Exit from "./../../assets/images/exit.png";
-import ClosedExit from "./../../assets/images/closedExit.png";
 
 // walls
 import Wall01 from "./../../assets/images/wall01.png";
@@ -15,6 +13,9 @@ import Wall02 from "./../../assets/images/wall02.png";
 // special scenes
 import FirstScene from "./../../assets/images/firstScene.png";
 import CastleExteriors from "./../../assets/images/castleExteriors.png";
+import Exit from "./../../assets/images/exit.png";
+import ClosedExit from "./../../assets/images/closedExit.png";
+import CastleEntrance from "./../../assets/images/castleEntrance.png";
 
 import * as GameplayActions from "./gameplayActions";
 
@@ -62,6 +63,17 @@ const SpeciaRoomTypes = [
     requirements: [],
     disableButtons: [],
     image: ClosedExit
+  },
+  {
+    name: "Castle Entrance",
+    description: "After taking a step inside the castle the main door has been closed. You'll have to find another way to escape.",
+    action: GameplayActions.ACTION_NONE,
+    probSuccess: 100,
+    actionSuccess: "",
+    actionFailed: "",
+    requirements: [],
+    disableButtons: [],
+    image: CastleEntrance
   }
 ];
 
@@ -214,7 +226,7 @@ const createWorld = (width, height) => {
 
   worldInstance[posExitX][posExitY] = SpeciaRoomTypes[3]; // we set 1 exit randomly.
 
-  worldInstance[1][1] = RoomTypes[5]; // first room is always a hall.
+  worldInstance[1][1] = SpeciaRoomTypes[4]; // first room is always the castle entrance.
 
   return worldInstance;
 };
