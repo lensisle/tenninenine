@@ -1,5 +1,5 @@
 import Door from "./../../assets/images/door.png";
-import Entrance from "./../../assets/images/entrance.png";
+import MysteriousPassage from "./../../assets/images/mysteriousPassage.png";
 import Trap01 from "./../../assets/images/trap01.png";
 import Trap02 from "./../../assets/images/trap02.png";
 import Trap03 from "./../../assets/images/trap03.png";
@@ -14,14 +14,14 @@ import Wall02 from "./../../assets/images/wall02.png";
 
 // special scenes
 import FirstScene from "./../../assets/images/firstScene.png";
-import CastleScene from "./../../assets/images/castle-outside.png";
+import CastleExteriors from "./../../assets/images/castleExteriors.png";
 
 import * as GameplayActions from "./gameplayActions";
 
 const SpeciaRoomTypes = [
   {
     name: "Lost on an island",
-    description: "You woke up on a hill, it's at night and it is very cold. You do not know where you are or where you come from.",
+    description: "You woke up on a hill, it's at night and it feels very cold. You don't know where you are or where you came from.",
     action: GameplayActions.ACTION_EXPLORE_SORROUNDINGS,
     probSuccess: 100,
     actionSuccess: "You get up and walk around looking for information.",
@@ -31,15 +31,15 @@ const SpeciaRoomTypes = [
     image: FirstScene
   },
   {
-    name: "Castle Entrance",
-    description: "You are about to enter this mysterious castle. You look around and there don't seem to be many other options.",
-    action: GameplayActions.ACTION_ENTER,
+    name: "Castle Exteriors",
+    description: "You found a mysterious castle. Looking around there don't seem to be many other places to explore.",
+    action: GameplayActions.ACTION_ENTER_CASTLE,
     probSuccess: 100,
     actionSuccess: "After passing the entrance you hear a loud noise of doors closing behind you.",
     actionFailed: "...",
     requirements: [],
     disableButtons: ["left", "right", "up", "down"],
-    image: CastleScene
+    image: CastleExteriors
   },
   {
     name: "Giant Door",
@@ -142,7 +142,7 @@ const RoomTypes = [
     actionFailed: "",
     requirements: [],
     disableButtons: [],
-    image: Entrance
+    image: MysteriousPassage
   }
 ];
 
@@ -177,6 +177,16 @@ const getRandomInt = (min, max) => {
   return Math.floor(Math.random() * (max - min)) + min;
 };
 
+// set the initial world
+const createInitialWorld = () => {
+  return [
+    [
+      SpeciaRoomTypes[0],
+      SpeciaRoomTypes[1]
+    ]
+  ];
+};
+
 // For now we will keep the world generation simple.
 // TODO: add more generation rules.
 // TODO: include special scenes in the world generation.
@@ -199,8 +209,8 @@ const createWorld = (width, height) => {
     }
   }
 
-  const posExitX = getRandomInt(0, worldInstance.length - 1);
-  const posExitY = getRandomInt(0, worldInstance[0].length - 1);
+  const posExitX = getRandomInt(1, worldInstance.length - 1);
+  const posExitY = getRandomInt(1, worldInstance[0].length - 1);
 
   worldInstance[posExitX][posExitY] = SpeciaRoomTypes[3]; // we set 1 exit randomly.
 
@@ -209,4 +219,4 @@ const createWorld = (width, height) => {
   return worldInstance;
 };
 
-export { createWorld };
+export { createInitialWorld, createWorld };

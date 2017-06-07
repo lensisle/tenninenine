@@ -2,12 +2,12 @@ import { combineReducers } from "redux";
 
 import player from "./player";
 import world from "./world";
-import playerRoom from "./playerRoom";
+import scene from "./scene";
 
 const Reducers = combineReducers({
   player,
   world,
-  playerRoom
+  scene
 });
 
 export default Reducers;

@@ -7,20 +7,25 @@ import "./styles/main.scss";
 import Reducers from "./reducers/index";
 import App from "./components/app";
 
-import { createWorld } from "./game/world";
+import { createInitialWorld } from "./game/world";
 
-const world = createWorld(20, 20);
+const initialWorld = createInitialWorld();
 
-const playerRoom = {
-  room: world[1][1],
+const world = {
+  rooms: initialWorld,
+  currentRoom: initialWorld[0][0],
   position: {
-    x: 1,
-    y: 1
+    x: 0,
+    y: 0
   },
-  previousPosition: {
-    x: 1,
-    y: 1
-  },
+  previousPosition: { 
+    x: 0, 
+    y: 0 
+  }
+};
+
+// for now we will keep this as an object in case we add more data to scene state
+const scene = {
   showSceneDescription: false
 };
 
@@ -34,7 +39,7 @@ const player = {
 
 const initialGameState = { 
   world,
-  playerRoom,
+  scene,
   player
 };
 

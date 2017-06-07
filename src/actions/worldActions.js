@@ -1,10 +1,27 @@
-import { SET_PLAYER_ROOM, TOGGLE_SCENE_DESCRIPTION, BACK_PREVIOUS_POSITION } from "./actionTypes";
+import * as ActionTypes from "./../actions/actionTypes";
+
+import { createWorld } from "./../game/world";
+
+// TODO: create the world dynamically through a form
+export const setToGameplayWorld = (position) => {
+
+  const world = createWorld(20, 20);
+  const currentRoom = world[position.x][position.y];
+
+  return {
+    type: ActionTypes.SET_TO_GAMEPLAY_WORLD,
+    world,
+    currentRoom,
+    position,
+    previousPosition: position
+  };
+};
 
 // TODO: previous position should be set in another action
-export const setPlayerRoom = (world, currentPosition, direction) => {
+export const setPlayerRoom = (rooms, currentPosition, direction) => {
   const worldSize = {
-    width: world.length,
-    height: world[0].length
+    width: rooms.length,
+    height: rooms[0].length
   };
 
   let newPosX = currentPosition.x;
@@ -25,7 +42,7 @@ export const setPlayerRoom = (world, currentPosition, direction) => {
     newPosY += direction.y;
   }
 
-  const room = world[newPosX][newPosY];
+  const room = rooms[newPosX][newPosY];
   
   if(newPosX !== currentPosition.x || newPosY !== currentPosition.y) {
     previousPosition["x"] = currentPosition.x;
@@ -33,24 +50,17 @@ export const setPlayerRoom = (world, currentPosition, direction) => {
   }
 
   return {
-    type: SET_PLAYER_ROOM,
+    type: ActionTypes.SET_PLAYER_ROOM,
     room,
     position: { x: newPosX, y: newPosY },
     previousPosition
   }
 };
 
-export const toggleSceneDescription = (currentDescriptionEnabled) => {
+export const backPreviousPosition = (rooms, currentPosition, previousPosition) => {
+  const room = rooms[previousPosition.x][previousPosition.y];
   return {
-    type: TOGGLE_SCENE_DESCRIPTION,
-    showSceneDescription: !currentDescriptionEnabled
-  };
-};
-
-export const backPreviousPosition = (world, currentPosition, previousPosition) => {
-  const room = world[previousPosition.x][previousPosition.y];
-  return {
-    type: BACK_PREVIOUS_POSITION,
+    type: ActionTypes.BACK_PREVIOUS_POSITION,
     room,
     position: previousPosition,
     previousPosition: currentPosition
