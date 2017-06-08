@@ -9,63 +9,48 @@ import * as GameplayActions from "./../game/gameplayActions";
 
 class Controls extends React.Component {
   componentWillMount() {
-    const actions = {};
-    actions[GameplayActions.ACTION_BACK] = () => 
-      this.props.moveToPreviousPosition(this.props.world.rooms, this.props.playerPosition, this.props.previousPosition);
-    actions[GameplayActions.ACTION_EXPLORE_SORROUNDINGS] = () => this.props.onMoveUp(this.props.world.rooms, this.props.playerPosition);
-    actions[GameplayActions.ACTION_ENTER_CASTLE] = () => this.props.setToGameplayWorld({ x: 1, y: 1 }); // Player always starts at x:1 y: 1
+    this.initializeActions();
+    this.createActionButtons();
+  }
 
-    this.actions = actions;
+  componentWillUpdate() {
+    this.createActionButtons();
+  }
 
-    const movements = {};
-    movements["left"] = () => this.props.onMoveLeft(this.props.world.rooms, this.props.playerPosition);
-    movements["right"] = () => this.props.onMoveRight(this.props.world.rooms, this.props.playerPosition);
-    movements["up"] = () => this.props.onMoveUp(this.props.world.rooms, this.props.playerPosition);
-    movements["down"] = () => this.props.onMoveDown(this.props.world.rooms, this.props.playerPosition);
+  initializeActions() {
+    const rooms = this.props.world.rooms;
+    const position = this.props.playerPosition;
+    this.actions = {
+      [GameplayActions.ACTION_EXPLORE_SORROUNDINGS]: () => this.props.onMoveUp(rooms, position)
+    };
+  }
 
-    this.movements = movements;
+  createActionButtons() {
+    this.buttons = [];
+    const buttonsData = this.props.currentRoom.buttons;
+    const maxButtons = 5;
+
+    let i = 0;
+    for(i = 0; i < maxButtons - buttonsData.length; i++) {
+      this.buttons.push(<ControlButton key={i} onClick={() => {}} text={GameplayActions.ACTION_NONE} />);
+    }
+
+    console.log(this.props.currentRoom, buttonsData);
+
+    for(let j = 0; j < buttonsData.length; j++) {
+      this.buttons.push(<ControlButton key={j + i} 
+                                       onClick={this.actions[buttonsData[j].action]}
+                                       text={buttonsData[j].action}
+                        />);
+    }
   }
 
   render() {
-    const leftDisabled = this.isDisabled("left");
-    const rightDisabled = this.isDisabled("right");
-    const upDisabled = this.isDisabled("up");
-    const downDisabled = this.isDisabled("down");
-    const actionDisabled = this.isDisabled("action");
-
-    const leftOnClick = leftDisabled ? () => {} : this.movements["left"];
-    const leftText = leftDisabled ? "-" : "Move Left";
-
-    const rightOnClick = rightDisabled ? () => {} : this.movements["right"];
-    const rightText = rightDisabled ? "-" : "Move Right";
-
-    const upOnClick = upDisabled ? () => {} : this.movements["up"];
-    const upText = upDisabled ? "-" : "Move Up";
-
-    const downOnClick = downDisabled ? () => {} : this.movements["down"];
-    const downText = downDisabled ? "-" : "Move Down";
-
-    const actionOnClick = actionDisabled ? () => {} : this.actions[this.props.currentRoom.action];
-    const actionText = actionDisabled ? "-" : this.props.currentRoom.action;
-
     return (
       <div className="controls">
-        <ControlButton onClick={leftOnClick} text={leftText} />
-        <ControlButton onClick={rightOnClick} text={rightText} />
-        <ControlButton onClick={upOnClick} text={upText} />
-        <ControlButton onClick={downOnClick} text={downText} />
-        <ControlButton onClick={actionOnClick} text={actionText} />
+        {this.buttons}
       </div>
     )
-  }
-
-  isDisabled(controlName) {
-    for(let disabled of this.props.currentRoom.disableButtons) {
-      if(disabled === controlName) {
-        return true;
-      }
-    }
-    return false;
   }
 }
 
