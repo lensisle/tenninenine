@@ -3,19 +3,18 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 const extractSass = new ExtractTextPlugin({
-  filename: "[name].css",
-  disable: process.env.NODE_ENV === "development"
+  filename: "[name].css"
 });
 
 const copyHTMLTemplate = new HtmlWebpackPlugin({
-  template: "client/index.html"
+  template: "template/index.html"
 });
 
 const config = {
   entry: "./src/index.js",
   output: {
     filename: "bundle.js",
-    path: path.resolve(__dirname, "dist")
+    path: path.resolve(__dirname, "build")
   },
   devtool: "source-map",
   module: {
