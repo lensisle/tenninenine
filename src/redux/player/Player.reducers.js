@@ -1,15 +1,15 @@
 const defaultState = {
-  currentView: 'TitleScreen',
+  characterClass: 'none',
+  level: 1,
 };
 
 export default function(state = defaultState, action) {
   switch (action.type) {
-  case 'SET_CURRENT_VIEW':
+  case 'SET_CHARACTER_CLASS':
     return {
       ...state,
-      currentView: action.payload,
+      characterClass: action.payload,
     };
-  default:
-    return state;
+  default: return state;
   }
 }

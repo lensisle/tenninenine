@@ -1,9 +1,11 @@
 import { combineReducers } from 'redux';
 
-import MainFrame from '../containers/MainFrame/MainFrame.reducers';
+import MainFrameState from '../containers/MainFrame/MainFrame.reducers';
+import PlayerState from '../redux/player/Player.reducers';
 
 const rootReducer = combineReducers({
-  MainFrame,
+  MainFrameState,
+  PlayerState,
 });
 
 export default rootReducer;

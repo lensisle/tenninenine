@@ -36,7 +36,6 @@
     "babel-preset-env": "^1.5.1",
     "babel-preset-react": "^6.24.1",
     "css-loader": "^0.28.3",
-    "dotenv": "^4.0.0",
     "eslint": "^3.19.0",
     "eslint-config-prettier": "^2.3.0",
     "eslint-plugin-prettier": "^2.1.2",
@@ -46,23 +45,26 @@
     "html-webpack-plugin": "^2.28.0",
     "image-webpack-loader": "^3.3.1",
     "node-sass": "^4.5.3",
-    "postcss-loader": "^2.0.6",
     "pre-push": "^0.1.1",
     "precommit-hook": "^3.0.0",
     "prettier": "^1.5.3",
     "prettier-eslint-cli": "^4.1.1",
     "redux-logger": "^3.0.6",
-    "sass-loader": "^6.0.5",
+    "sass-loader": "^6.0.6",
     "style-loader": "^0.18.1",
     "url-loader": "^0.5.8",
     "webpack": "^2.6.1",
     "webpack-dev-server": "^2.7.1"
   },
   "dependencies": {
+    "lodash": "^4.17.4",
     "prop-types": "^15.5.10",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-redux": "^5.0.5",
-    "redux": "^3.6.0"
+    "react-tap-event-plugin": "^2.0.1",
+    "redux": "^3.6.0",
+    "redux-observable": "^0.16.0",
+    "rxjs": "^5.4.3"
   }
 }

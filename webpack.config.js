@@ -5,7 +5,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 const extractSass = new ExtractTextPlugin({
-  filename: "[name].css"
+  filename: "[name].[contenthash].css",
+  disable: process.env.NODE_ENV === "development"
 });
 
 const copyHTMLTemplate = new HtmlWebpackPlugin({
@@ -46,21 +47,13 @@ const config = {
       {
         test: /\.scss$/,
         use: extractSass.extract({
-            use: [
-              {
-                loader: "css-loader",
-                options: {
-                  importLoaders: 1,
-                }
-              },
-              { 
-                loader: "sass-loader",
-              },
-              {
-                loader: 'postcss-loader',
-              }
-            ],
-            fallback: "style-loader"
+          use: [{
+              loader: "css-loader"
+          }, {
+              loader: "sass-loader"
+          }],
+          // use style-loader in development
+          fallback: "style-loader"
         })
       },
       {

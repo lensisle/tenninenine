@@ -1,4 +1,7 @@
 @import "./components/reset";
+@import "mixins";
+
+
 
 * {
   margin: 0;
@@ -11,6 +14,8 @@ html {
 
 body {
   font-family: Helvetica, Arial, sans-serif;
+  width: 100vw;
+  height: 100vh;
   background: black;
 }
 
@@ -22,7 +27,5 @@ input, select, button {
   font-size: 1.3rem;
 }
 
-@import "./components/wrapper";
-@import "./components/scene";
-@import "./components/controls";
-@import "./components/playerStats";
+@import "./components/mainframe";
+@import "./components/titlescreen";
