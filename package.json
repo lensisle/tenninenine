@@ -36,7 +36,6 @@
     "babel-preset-env": "^1.5.1",
     "babel-preset-react": "^6.24.1",
     "css-loader": "^0.28.3",
-    "dotenv": "^4.0.0",
     "eslint": "^3.19.0",
     "eslint-config-prettier": "^2.3.0",
     "eslint-plugin-prettier": "^2.1.2",
@@ -59,10 +58,12 @@
     "webpack-dev-server": "^2.7.1"
   },
   "dependencies": {
+    "lodash": "^4.17.4",
     "prop-types": "^15.5.10",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-redux": "^5.0.5",
+    "react-tap-event-plugin": "^2.0.1",
     "redux": "^3.6.0"
   }
 }
