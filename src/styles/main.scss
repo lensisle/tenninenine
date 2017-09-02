@@ -1,4 +1,9 @@
 @import "./components/reset";
+@import "mixins";
+
+$dark-red: #51074b;
+$med-red: #a50053;
+$light-red: #c10056;
 
 * {
   margin: 0;
@@ -11,7 +16,9 @@ html {
 
 body {
   font-family: Helvetica, Arial, sans-serif;
-  background: black;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(180deg, $dark-red, $med-red 80%, $light-red);
 }
 
 p, h1, h2, h3, h4, h5 {
@@ -21,3 +28,5 @@ p, h1, h2, h3, h4, h5 {
 input, select, button {
   font-size: 1.3rem;
 }
+
+@import "./components/mainframe";

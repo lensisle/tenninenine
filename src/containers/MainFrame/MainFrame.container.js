@@ -24,7 +24,7 @@ class MainFrameContainer extends Component {
     const currenViewId = get(MainFrameState, 'currentView', 'default');
     const CurrentView = this.views[currenViewId];
 
-    return <CurrentView />;
+    return <div className="main-frame"><CurrentView /></div>;
   }
 }
 

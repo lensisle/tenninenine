@@ -5,7 +5,11 @@ injectTapEventPlugin();
 
 class TitleScreen extends Component {
   render() {
-    return <p>Title Screen</p>;
+    return (
+      <div className="title-screen">
+        <p>title screen</p>
+      </div>
+    );
   }
 }
 
