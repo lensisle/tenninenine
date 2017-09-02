@@ -8,7 +8,7 @@
     "prettier": "prettier-eslint --write './src/*.js' './src/components/**/*.js' './src/containers/**/*.js'",
     "build": "webpack",
     "build:watch": "webpack --watch",
-    "start:dev": "set NODE_ENV='development' && webpack && webpack-dev-server --open",
+    "start:dev": "webpack && webpack-dev-server --open",
     "validate": "npm ls"
   },
   "pre-commit": [
@@ -36,6 +36,7 @@
     "babel-preset-env": "^1.5.1",
     "babel-preset-react": "^6.24.1",
     "css-loader": "^0.28.3",
+    "dotenv": "^4.0.0",
     "eslint": "^3.19.0",
     "eslint-config-prettier": "^2.3.0",
     "eslint-plugin-prettier": "^2.1.2",

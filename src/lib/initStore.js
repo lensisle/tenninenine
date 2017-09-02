@@ -7,27 +7,21 @@ export default function(initState) {
   const middlewares = [];
   const middlewaresApplied = [];
 
-  if (process.env.NODE_ENV === 'development') {
-    middlewares.push(logger);
-    middlewaresApplied.push('logger');
+  middlewares.push(logger);
+  middlewaresApplied.push('logger');
 
-    if (process.browser && window.devToolsExtension && !store) {
-      const storeMiddlewares = compose(applyMiddleware(...middlewares), window.devToolsExtension());
-      const store = createStore(rootReducer, initState, storeMiddlewares);
-      window.store = store;
+  if (!window.store) {
+    let storeMiddlewares = null;
+
+    if (window.devToolsExtension) {
       middlewaresApplied.push('devToolsExtension');
-
-      return {
-        store,
-        middlewaresApplied,
-      };
+      storeMiddlewares = compose(applyMiddleware(...middlewares), window.devToolsExtension());
+    } else {
+      storeMiddlewares = compose(applyMiddleware(...middlewares));
     }
-  }
 
-  if (!process.browser || !store) {
-    const storeMiddlewares = compose(applyMiddleware(...middlewares));
     const store = createStore(rootReducer, initState, storeMiddlewares);
-    global.store = store;
+    window.store = store;
   }
 
   return {

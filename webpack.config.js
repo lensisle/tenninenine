@@ -28,12 +28,19 @@ const config = {
         use: {
           loader: "babel-loader",
           options: {
-            presets: ["env", "react"]
+            presets: [
+              "env",
+              "react"
+            ],
+            plugins: [
+              require('babel-plugin-transform-object-rest-spread'), 
+              require('babel-plugin-transform-class-properties'),
+            ],
           }
         },
         test: /\.jsx?$/,
         exclude: [
-          path.resolve(__dirname, "node_modules")
+          path.resolve(__dirname, "node_modules"),
         ]
       },
       {
@@ -70,7 +77,7 @@ const config = {
   },
   plugins: [
     copyHTMLTemplate,
-    extractSass
+    extractSass,
   ]
 };
 
