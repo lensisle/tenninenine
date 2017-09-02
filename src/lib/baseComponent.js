@@ -11,7 +11,7 @@ function ApplyBaseComponent(Component) {
       initialState: PropTypes.object,
     };
     static defaultProps = {
-      initialState: undefined,
+      initialState: {},
     };
     constructor(props) {
       super(props);
