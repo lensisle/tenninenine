@@ -18,7 +18,10 @@ const config = {
     filename: "bundle.js",
     path: path.resolve(__dirname, "build")
   },
-  devtool: "source-map",
+  devtool: "inline-source-map",
+  devServer: {
+    contentBase: './build'
+  },
   module: {
     rules: [
       {
@@ -36,7 +39,20 @@ const config = {
       {
         test: /\.scss$/,
         use: extractSass.extract({
-            use: [{ loader: "css-loader" }, { loader: "sass-loader" }],
+            use: [
+              {
+                loader: "css-loader",
+                options: {
+                  importLoaders: 1,
+                }
+              },
+              { 
+                loader: "sass-loader",
+              },
+              {
+                loader: 'postcss-loader',
+              }
+            ],
             fallback: "style-loader"
         })
       },
