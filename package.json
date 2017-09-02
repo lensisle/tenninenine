@@ -8,7 +8,7 @@
     "prettier": "prettier-eslint --write './src/*.js' './src/components/**/*.js' './src/containers/**/*.js'",
     "build": "webpack",
     "build:watch": "webpack --watch",
-    "start:dev": "lite-server",
+    "start:dev": "webpack && webpack-dev-server --open",
     "validate": "npm ls"
   },
   "pre-commit": [
@@ -36,6 +36,7 @@
     "babel-preset-env": "^1.5.1",
     "babel-preset-react": "^6.24.1",
     "css-loader": "^0.28.3",
+    "dotenv": "^4.0.0",
     "eslint": "^3.19.0",
     "eslint-config-prettier": "^2.3.0",
     "eslint-plugin-prettier": "^2.1.2",
@@ -44,16 +45,18 @@
     "file-loader": "^0.11.1",
     "html-webpack-plugin": "^2.28.0",
     "image-webpack-loader": "^3.3.1",
-    "lite-server": "^2.3.0",
     "node-sass": "^4.5.3",
+    "postcss-loader": "^2.0.6",
     "pre-push": "^0.1.1",
     "precommit-hook": "^3.0.0",
     "prettier": "^1.5.3",
     "prettier-eslint-cli": "^4.1.1",
+    "redux-logger": "^3.0.6",
     "sass-loader": "^6.0.5",
     "style-loader": "^0.18.1",
     "url-loader": "^0.5.8",
-    "webpack": "^2.6.1"
+    "webpack": "^2.6.1",
+    "webpack-dev-server": "^2.7.1"
   },
   "dependencies": {
     "prop-types": "^15.5.10",

@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
@@ -16,25 +18,48 @@ const config = {
     filename: "bundle.js",
     path: path.resolve(__dirname, "build")
   },
-  devtool: "source-map",
+  devtool: "inline-source-map",
+  devServer: {
+    contentBase: './build'
+  },
   module: {
     rules: [
       {
         use: {
           loader: "babel-loader",
           options: {
-            presets: ["env", "react"]
+            presets: [
+              "env",
+              "react"
+            ],
+            plugins: [
+              require('babel-plugin-transform-object-rest-spread'), 
+              require('babel-plugin-transform-class-properties'),
+            ],
           }
         },
         test: /\.jsx?$/,
         exclude: [
-          path.resolve(__dirname, "node_modules")
+          path.resolve(__dirname, "node_modules"),
         ]
       },
       {
         test: /\.scss$/,
         use: extractSass.extract({
-            use: [{ loader: "css-loader" }, { loader: "sass-loader" }],
+            use: [
+              {
+                loader: "css-loader",
+                options: {
+                  importLoaders: 1,
+                }
+              },
+              { 
+                loader: "sass-loader",
+              },
+              {
+                loader: 'postcss-loader',
+              }
+            ],
             fallback: "style-loader"
         })
       },
@@ -52,7 +77,7 @@ const config = {
   },
   plugins: [
     copyHTMLTemplate,
-    extractSass
+    extractSass,
   ]
 };
 
