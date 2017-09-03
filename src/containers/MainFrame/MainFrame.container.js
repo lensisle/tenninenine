@@ -6,6 +6,7 @@ import { get } from 'lodash';
 import ApplyBaseComponent from '../../lib/baseComponent';
 
 import TitleScreenContainer from '../TitleScreen/TitleScreen.container';
+import SelectionScreenContainer from '../SelectionScreen/SelectionScreen.container';
 
 class MainFrameContainer extends Component {
   static propTypes = {
@@ -17,6 +18,7 @@ class MainFrameContainer extends Component {
 
     this.views = {};
     this.views.TitleScreen = TitleScreenContainer;
+    this.views.SelectionScreen = SelectionScreenContainer;
   }
 
   render() {
@@ -24,7 +26,11 @@ class MainFrameContainer extends Component {
     const currenViewId = get(MainFrameState, 'currentView', 'default');
     const CurrentView = this.views[currenViewId];
 
-    return <div className="main-frame"><CurrentView /></div>;
+    return (
+      <div className="main-frame">
+        <CurrentView />
+      </div>
+    );
   }
 }
 

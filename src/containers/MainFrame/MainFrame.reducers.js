@@ -4,10 +4,10 @@ const defaultState = {
 
 export default function(state = defaultState, action) {
   switch (action.type) {
-  case 'SET_VIEW_TITLE_SCREEN':
+  case 'SET_CURRENT_VIEW':
     return {
       ...state,
-      currentView: 'TitleScreen',
+      currentView: action.payload,
     };
   default:
     return state;
