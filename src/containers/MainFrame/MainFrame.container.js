@@ -43,4 +43,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default <MainFrameStore />;
+export default MainFrameStore;
