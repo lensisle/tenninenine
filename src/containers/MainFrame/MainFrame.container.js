@@ -15,7 +15,6 @@ class MainFrameContainer extends Component {
 
   constructor(props) {
     super(props);
-
     this.views = {};
     this.views.TitleScreen = TitleScreenContainer;
     this.views.SelectionScreen = SelectionScreenContainer;

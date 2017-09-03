@@ -13,7 +13,6 @@ class TitleScreenContainer extends Component {
 
   constructor(props) {
     super(props);
-
     this.onStartPressed = this.onStartPressed.bind(this);
   }
 
@@ -27,12 +26,6 @@ class TitleScreenContainer extends Component {
   }
 }
 
-const TitleScreenConnect = connect(mapStateToProps)(TitleScreenContainer);
-
-function mapStateToProps(state) {
-  return {
-    ...state,
-  };
-}
+const TitleScreenConnect = connect()(TitleScreenContainer);
 
 export default TitleScreenConnect;
