@@ -1,9 +1,7 @@
 @import "./components/reset";
 @import "mixins";
 
-$dark-red: #51074b;
-$med-red: #a50053;
-$light-red: #c10056;
+
 
 * {
   margin: 0;
@@ -18,7 +16,7 @@ body {
   font-family: Helvetica, Arial, sans-serif;
   width: 100vw;
   height: 100vh;
-  background: linear-gradient(180deg, $dark-red, $med-red 80%, $light-red);
+  background: black;
 }
 
 p, h1, h2, h3, h4, h5 {
@@ -30,3 +28,4 @@ input, select, button {
 }
 
 @import "./components/mainframe";
+@import "./components/titlescreen";
