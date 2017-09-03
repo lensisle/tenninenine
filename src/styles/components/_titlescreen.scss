@@ -25,16 +25,17 @@ $light-red: #c10056;
 }
 
 .title-screen__tap {
-  color: white;
+  color: black;
   font-size: 20px;
   text-align: center;
   margin: auto;
   margin-bottom: 100px;
-  width: 40%;
+  width: 20%;
   cursor: pointer;
-  transition: 0.2s all ease-in-out;
+  border: 1px solid black;
+  padding: 5px 0;
   &:hover {
-    font-size: 23px;
-    color: black;
+    background: black;
+    color: $med-red;
   }
 }
