@@ -1,0 +1,57 @@
+.selection-screen {
+    background: linear-gradient(180deg, $dark-red, $med-red 80%, $light-red);
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.selection-screen__info {
+    width: 80%;
+    margin: 20px auto;
+    font-size: 26px;
+}
+
+.selection-screen__spec-name {
+    font-weight: bold;
+    cursor: default;
+}
+
+.selection-screen__description {
+    margin-top: 35px;
+    font-style: italic;
+    font-size: 21px;
+}
+
+.selection-screen__spec-svg-container svg {
+    width: 240px;
+    height: 240px;
+    margin: 30px auto 0 auto;
+    display: block;
+}
+
+.selection-screen-stats {
+    margin-top: 20px;
+}
+
+.selection-screen-stat-label {
+    display: block;
+    width: 150px;
+    cursor: default;
+}
+
+.selection-screen-stat-container {
+    display: flex;
+    height: 30px;
+    margin: 6px 0;
+}
+
+.selection-screen-stat-box {
+    width: 30px;
+    height: 100%;
+    margin: 0 5px;
+    display: block;
+    background: black;
+    border-radius: 50%;
+}
