@@ -19,9 +19,22 @@
 }
 
 .selection-screen__description {
-    margin-top: 35px;
     font-style: italic;
     font-size: 21px;
+}
+
+.selection-screen__selection-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin: 50px 0;
+}
+
+.selection-screen__selection-button {
+    height: 80px;
+    width: 100px;
+    background: black;
+    color: $med-red;
+    cursor: pointer;
 }
 
 .selection-screen__spec-svg-container svg {
