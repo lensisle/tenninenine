@@ -6,7 +6,7 @@ import SelectionScreen from '../../components/SelectionScreen/SelectionScreen';
 
 import Data from '../../data/Specializations.json';
 
-import { onSetCharacterSpec } from '../../redux/player/player.actions';
+import { onSetCharacterSpec } from '../../redux/player/Player.actions';
 import { onSetSelectedIndex } from './SelectionScreen.actions';
 
 class SelectionScreenContainer extends Component {
