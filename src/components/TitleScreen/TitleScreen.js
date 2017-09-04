@@ -14,9 +14,7 @@ class TitleScreen extends Component {
 
     return (
       <div className="title-screen">
-        <div className="title-screen__name">
-          x99
-        </div>
+        <div className="title-screen__name">X99</div>
         <div className="title-screen__tap" onClick={onStartPressed}>
           CLICK TO START
         </div>

@@ -21,7 +21,8 @@ render(MainFrame);
 
 if (module.hot) {
   module.hot.accept('./containers/MainFrame/MainFrame.container', () => {
-    const NextApp = require('./containers/MainFrame/MainFrame.container').default;
+    const NextApp = require('./containers/MainFrame/MainFrame.container')
+      .default;
     render(NextApp);
   });
 }

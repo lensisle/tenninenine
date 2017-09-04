@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 class SelectionScreenStats extends Component {
   static propTypes = {
     description: PropTypes.string,
-    movements: PropTypes.number,
+    agility: PropTypes.number,
     life: PropTypes.number,
     damage: PropTypes.number,
     defense: PropTypes.number,
@@ -12,17 +12,13 @@ class SelectionScreenStats extends Component {
   };
 
   renderStat(quantity) {
-    return [...Array(quantity).keys()].map(el => <div key={el} className="selection-screen-stat-box" />);
+    return [...Array(quantity).keys()].map(el => (
+      <div key={el} className="selection-screen-stat-box" />
+    ));
   }
 
   render() {
-    const {
-      movements,
-      life,
-      damage,
-      defense,
-      inventory,
-    } = this.props;
+    const { life, damage, defense, inventory, agility } = this.props;
     return (
       <div className="selection-screen-stats">
         <div className="selection-screen-stat-container">
@@ -43,7 +39,7 @@ class SelectionScreenStats extends Component {
         </div>
         <div className="selection-screen-stat-container">
           <div className="selection-screen-stat-label">Agility</div>
-          {this.renderStat(movements)}
+          {this.renderStat(agility)}
         </div>
       </div>
     );

@@ -9,7 +9,7 @@ export default function(state = defaultState, action) {
       ...state,
       selectedIndex: action.payload,
     };
-  default: return state;
+  default:
+    return state;
   }
 }
-
