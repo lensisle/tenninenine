@@ -1,0 +1,15 @@
+.loading-screen {
+  background: linear-gradient(180deg, $dark-red, $med-red 80%, $light-red);
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.loading-screen__message {
+  width: 100%;
+  text-align: center;
+  font-size: 30px;
+}

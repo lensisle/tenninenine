@@ -1,6 +1,8 @@
 import { logger } from 'redux-logger';
 import { createStore, compose, applyMiddleware } from 'redux';
+import { createEpicMiddleware } from 'redux-observable';
 
+import rootEpic from './epics';
 import rootReducer from './reducers';
 
 export default function(initState) {
@@ -12,6 +14,10 @@ export default function(initState) {
 
   if (!window.store) {
     let storeMiddlewares = null;
+
+    const epicMiddleware = createEpicMiddleware(rootEpic);
+    middlewares.push(epicMiddleware);
+    middlewaresApplied.push('epicMiddleware');
 
     if (window.devToolsExtension) {
       middlewaresApplied.push('devToolsExtension');

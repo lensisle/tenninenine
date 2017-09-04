@@ -5,12 +5,15 @@ import { get } from 'lodash';
 
 import ApplyBaseComponent from '../../lib/baseComponent';
 
+import LoadingScreen from '../../components/LoadingScreen/LoadingScreen';
+
 import TitleScreenContainer from '../TitleScreen/TitleScreen.container';
 import SelectionScreenContainer from '../SelectionScreen/SelectionScreen.container';
 
 class MainFrameContainer extends Component {
   static propTypes = {
     MainFrameState: PropTypes.object,
+    loading: PropTypes.bool,
   };
 
   constructor(props) {
@@ -23,13 +26,12 @@ class MainFrameContainer extends Component {
   render() {
     const { MainFrameState } = this.props;
     const currenViewId = get(MainFrameState, 'currentView', 'default');
+    const loading = get(MainFrameState, 'loading', false);
     const CurrentView = this.views[currenViewId];
 
-    return (
-      <div className="main-frame">
-        <CurrentView />
-      </div>
-    );
+    const toRender = loading ? <LoadingScreen /> : <CurrentView />;
+
+    return <div className="main-frame">{toRender}</div>;
   }
 }
 
