@@ -31,11 +31,7 @@ class MainFrameContainer extends Component {
 
     const toRender = loading ? <LoadingScreen /> : <CurrentView />;
 
-    return (
-      <div className="main-frame">
-        {toRender}
-      </div>
-    );
+    return <div className="main-frame">{toRender}</div>;
   }
 }
 
