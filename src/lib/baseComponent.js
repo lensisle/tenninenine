@@ -10,17 +10,20 @@ function ApplyBaseComponent(Component) {
     static propTypes = {
       initialState: PropTypes.object,
     };
+
     static defaultProps = {
       initialState: {},
     };
+
     constructor(props) {
       super(props);
-      const { store } = initStore(props.initialState);
+      const { store } = initStore(this.props.initialState);
       this.store = store;
     }
+
     render() {
       return (
-        <Provider store={store}>
+        <Provider store={this.store}>
           <Component {...this.props} />
         </Provider>
       );

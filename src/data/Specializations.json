@@ -1,0 +1,31 @@
+{
+    "Specializations": [
+        {
+            "name": "Explorer",
+            "description": "High mobility and plenty of capacity to store things but does low damage.",
+            "agility": 2,
+            "life": 5,
+            "damage": 1,
+            "defense": 1,
+            "inventory": 6
+        },
+        {
+            "name": "Hunter",
+            "description": "A lot of fire power at cost of having low life and velocity.",
+            "agility": 1,
+            "life": 3,
+            "damage": 4,
+            "defense": 1,
+            "inventory": 4
+        },
+        {
+            "name": "Strategist",
+            "description": "Starts with a map and a random weapon but is weak.",
+            "agility": 1,
+            "life": 4,
+            "damage": 1,
+            "defense": 2,
+            "inventory": 4
+        }
+    ]
+}

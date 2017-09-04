@@ -1,3 +1,3 @@
-export const SET_CHARACTER_CLASS = 'SET_CHARACTER_CLASS';
+export const SET_CHARACTER_SPEC = 'SET_CHARACTER_SPEC';
 
-export const onSetCharacterClass = payload => ({ type: SET_CHARACTER_CLASS, payload });
+export const onSetCharacterSpec = payload => ({ type: SET_CHARACTER_SPEC, payload });

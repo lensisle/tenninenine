@@ -27,5 +27,7 @@ input, select, button {
   font-size: 1.3rem;
 }
 
+@import "./colors";
 @import "./components/mainframe";
 @import "./components/titlescreen";
+@import "./components/selectionscreen";

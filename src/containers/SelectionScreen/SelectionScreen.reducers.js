@@ -1,15 +1,15 @@
 const defaultState = {
-  spec: { },
-  level: 1,
+  selectedIndex: 0,
 };
 
 export default function(state = defaultState, action) {
   switch (action.type) {
-  case 'SET_CHARACTER_SPEC':
+  case 'SET_SELECTED_INDEX':
     return {
       ...state,
-      spec: action.payload,
+      selectedIndex: action.payload,
     };
-  default: return state;
+  default:
+    return state;
   }
 }

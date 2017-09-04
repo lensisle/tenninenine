@@ -8,7 +8,7 @@
     "prettier": "prettier-eslint --write './src/*.js' './src/components/**/*.js' './src/containers/**/*.js'",
     "build": "webpack",
     "build:watch": "webpack --watch",
-    "start:dev": "webpack && webpack-dev-server --open",
+    "start:dev": "webpack-dev-server",
     "validate": "npm ls"
   },
   "pre-commit": [
@@ -49,6 +49,7 @@
     "precommit-hook": "^3.0.0",
     "prettier": "^1.5.3",
     "prettier-eslint-cli": "^4.1.1",
+    "react-hot-loader": "next",
     "redux-logger": "^3.0.6",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.18.1",

@@ -3,10 +3,15 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const webpack = require('webpack');
+
+const hotModuleReplacement = new webpack.HotModuleReplacementPlugin();
+
+const namedModules = new webpack.NamedModulesPlugin();
 
 const extractSass = new ExtractTextPlugin({
   filename: "[name].[contenthash].css",
-  disable: process.env.NODE_ENV === "development"
+  disable: true,
 });
 
 const copyHTMLTemplate = new HtmlWebpackPlugin({
@@ -14,31 +19,44 @@ const copyHTMLTemplate = new HtmlWebpackPlugin({
 });
 
 const config = {
-  entry: "./src/index.js",
+  entry: {
+    "app": [
+      "react-hot-loader/patch",
+      "./src/index.js"
+    ],
+  },
   output: {
     filename: "bundle.js",
     path: path.resolve(__dirname, "build")
   },
-  devtool: "inline-source-map",
+  devtool: "eval",
   devServer: {
-    contentBase: './build'
+    contentBase: path.join(__dirname, "build"),
+    compress: true,
+    open: true,
+    hot: true,
   },
   module: {
     rules: [
       {
-        use: {
-          loader: "babel-loader",
-          options: {
-            presets: [
-              "env",
-              "react"
-            ],
-            plugins: [
-              require('babel-plugin-transform-object-rest-spread'), 
-              require('babel-plugin-transform-class-properties'),
-            ],
-          }
-        },
+        use: [
+          { 
+            loader: "react-hot-loader/webpack" 
+          },
+          {
+            loader: "babel-loader",
+            options: {
+              presets: [
+                "env",
+                "react"
+              ],
+              plugins: [
+                require('babel-plugin-transform-object-rest-spread'), 
+                require('babel-plugin-transform-class-properties'),
+              ],
+            }
+          },
+        ],
         test: /\.jsx?$/,
         exclude: [
           path.resolve(__dirname, "node_modules"),
@@ -46,15 +64,7 @@ const config = {
       },
       {
         test: /\.scss$/,
-        use: extractSass.extract({
-          use: [{
-              loader: "css-loader"
-          }, {
-              loader: "sass-loader"
-          }],
-          // use style-loader in development
-          fallback: "style-loader"
-        })
+        use: ["style-loader", "css-loader", "sass-loader"]
       },
       {
         test: /\.(jpe?g|png|gif|svg)$/,
@@ -71,6 +81,8 @@ const config = {
   plugins: [
     copyHTMLTemplate,
     extractSass,
+    hotModuleReplacement,
+    namedModules,
   ]
 };
 
