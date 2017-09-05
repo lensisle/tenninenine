@@ -4,8 +4,8 @@
   "description": "A react roguelike adventure",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint -f table ./src ./src/components ./src/containers ./src/lib || exit 1",
-    "prettier": "prettier-eslint --write './src/*.js' './src/components/**/*.js' './src/containers/**/*.js'",
+    "lint": "eslint -f table ./src ./src/components ./src/containers ./src/lib ./src/redux ./src/svg-components || exit 1",
+    "prettier": "prettier-eslint --write './src/*.js' './src/components/**/*.js' './src/containers/**/*.js' './src/lib/*.js' './src/redux/**/*.js' './src/svg-components/*.js'",
     "build": "webpack",
     "build:watch": "webpack --watch",
     "start:dev": "webpack-dev-server",
@@ -19,14 +19,14 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/camiloei/exninenine.git"
+    "url": "git+https://github.com/camiloei/tenninenine.git"
   },
   "author": "@camkida",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/camiloei/exninenine/issues"
+    "url": "https://github.com/camiloei/tenninenine/issues"
   },
-  "homepage": "https://github.com/camiloei/exninenine#readme",
+  "homepage": "https://github.com/camiloei/tenninenine#readme",
   "devDependencies": {
     "babel-core": "^6.24.1",
     "babel-eslint": "^7.2.3",
